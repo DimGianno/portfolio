@@ -14,10 +14,21 @@ Open `http://localhost:3000`.
 ## Production build
 
 ```bash
-npm run lint
 npm run build
 npm run start
 ```
+
+## Quality checks
+
+```bash
+npm run format:check
+npm run lint
+npm run typecheck
+npm test
+```
+
+`npm run typecheck` uses TypeScript 7. The TypeScript 6 compatibility package is installed only
+for tools that still depend on the legacy programmatic API.
 
 ## Content and assets
 

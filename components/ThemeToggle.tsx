@@ -8,7 +8,13 @@ export function ThemeToggle() {
   const isDark = theme === "dark";
 
   return (
-    <button className="icon-button" type="button" onClick={toggleTheme} aria-label={t.nav.theme} title={t.nav.theme}>
+    <button
+      className="icon-button"
+      type="button"
+      onClick={toggleTheme}
+      aria-label={t.nav.theme}
+      title={t.nav.theme}
+    >
       {isDark ? <Sun size={17} aria-hidden="true" /> : <Moon size={17} aria-hidden="true" />}
     </button>
   );

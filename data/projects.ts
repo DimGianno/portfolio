@@ -37,7 +37,16 @@ export const projects: Project[] = [
     slug: "backend",
     title: "Call Center Backend API",
     status: "Live / Polished",
-    stack: ["Node.js", "Express", "TypeScript", "MongoDB", "Jest", "Swagger/OpenAPI", "Render", "GitHub Actions"],
+    stack: [
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "MongoDB",
+      "Jest",
+      "Swagger/OpenAPI",
+      "Render",
+      "GitHub Actions",
+    ],
     description: {
       en: "A REST API for managing call-center data, including filtering, pagination, archiving, notes, deletion, validation, Swagger documentation, tests, CI/CD, and production/staging environments.",
       el: "Ένα REST API για διαχείριση call-center δεδομένων, με filtering, pagination, archiving, σημειώσεις, deletion, validation, Swagger documentation, tests, CI/CD και production/staging environments.",
