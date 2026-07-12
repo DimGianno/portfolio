@@ -23,7 +23,9 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const savedLocale = localStorage.getItem("portfolio-locale") as Locale | null;
     const savedTheme = localStorage.getItem("portfolio-theme") as Theme | null;
-    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
     const nextTheme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : preferredTheme;
 
     // Client preferences are intentionally restored only after hydration to keep server and client markup aligned.
@@ -44,7 +46,13 @@ export function SiteProvider({ children }: { children: React.ReactNode }) {
   };
 
   const value = useMemo(
-    () => ({ locale, setLocale, theme, toggleTheme: () => setTheme((current) => (current === "dark" ? "light" : "dark")), t: translations[locale] }),
+    () => ({
+      locale,
+      setLocale,
+      theme,
+      toggleTheme: () => setTheme((current) => (current === "dark" ? "light" : "dark")),
+      t: translations[locale],
+    }),
     [locale, theme],
   );
 

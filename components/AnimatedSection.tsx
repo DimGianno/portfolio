@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 
-export function AnimatedSection({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
+export function AnimatedSection({
+  children,
+  className = "",
+  id,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+}) {
   return (
     <motion.section
       className={className}

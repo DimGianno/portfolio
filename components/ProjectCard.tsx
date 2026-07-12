@@ -18,19 +18,38 @@ export function ProjectCard({ project, compact = false }: { project: Project; co
     <motion.article className="project-card" whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
       <div className={`screenshot-placeholder ${project.slug}`} aria-label={t.projects.screenshot}>
         <div className="placeholder-grid" />
-        <div className="placeholder-content"><ImageIcon size={22} aria-hidden="true" /><span>{t.projects.screenshotSoon}</span></div>
+        <div className="placeholder-content">
+          <ImageIcon size={22} aria-hidden="true" />
+          <span>{t.projects.screenshotSoon}</span>
+        </div>
       </div>
       <div className="project-body">
         <div className="project-heading">
           <div>
-            <p className="project-status"><span className="status-dot" /> {project.status}</p>
+            <p className="project-status">
+              <span className="status-dot" /> {project.status}
+            </p>
             <h3>{project.title}</h3>
           </div>
           <ArrowUpRight className="project-arrow" size={21} aria-hidden="true" />
         </div>
         <p className="project-description">{project.description[locale]}</p>
-        <div className="tags" aria-label={t.projects.stack}>{project.stack.map((item) => <span key={item} className="tag">{item}</span>)}</div>
-        {!compact && <div className="project-links">{links.map(({ href, label, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer"><Icon size={14} aria-hidden="true" /> {label}</a>)}</div>}
+        <div className="tags" aria-label={t.projects.stack}>
+          {project.stack.map((item) => (
+            <span key={item} className="tag">
+              {item}
+            </span>
+          ))}
+        </div>
+        {!compact && (
+          <div className="project-links">
+            {links.map(({ href, label, icon: Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer">
+                <Icon size={14} aria-hidden="true" /> {label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </motion.article>
   );

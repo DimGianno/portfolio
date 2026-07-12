@@ -2,10 +2,17 @@ export type Locale = "en" | "el";
 
 export const translations = {
   en: {
-    nav: { home: "Home", projects: "Projects", cv: "CV", language: "Switch language", theme: "Switch theme" },
+    nav: {
+      home: "Home",
+      projects: "Projects",
+      cv: "CV",
+      language: "Switch language",
+      theme: "Switch theme",
+    },
     hero: {
       eyebrow: "Available for junior developer opportunities",
-      intro: "I build thoughtful, reliable web experiences that turn real-world workflows into clear, useful products.",
+      intro:
+        "I build thoughtful, reliable web experiences that turn real-world workflows into clear, useful products.",
       projects: "View projects",
       cv: "View CV",
       github: "GitHub",
@@ -15,16 +22,19 @@ export const translations = {
     home: {
       featuredEyebrow: "Selected work",
       featuredTitle: "Projects built for real workflows.",
-      featuredCopy: "A focused look at the applications and APIs I have shaped from interface to deployment.",
+      featuredCopy:
+        "A focused look at the applications and APIs I have shaped from interface to deployment.",
       seeAll: "See all projects",
       skillsEyebrow: "Capabilities",
       skillsTitle: "A practical, full-stack toolkit.",
-      skillsCopy: "Comfortable across the product lifecycle—from responsive interfaces to APIs, testing, and reliable delivery.",
+      skillsCopy:
+        "Comfortable across the product lifecycle—from responsive interfaces to APIs, testing, and reliable delivery.",
       socialEyebrow: "Let’s connect",
       socialTitle: "Find the work behind the work.",
       socialCopy: "Explore the repositories, follow what I am building, or get in touch directly.",
       cvTitle: "Interested in working together?",
-      cvCopy: "Explore my experience, technical direction, and the kind of problems I enjoy solving.",
+      cvCopy:
+        "Explore my experience, technical direction, and the kind of problems I enjoy solving.",
       cvButton: "Open CV",
     },
     projects: {
@@ -47,19 +57,32 @@ export const translations = {
       download: "Download CV",
       comingSoon: "CV coming soon",
       profile: "Profile",
-      profileCopy: "Junior Full Stack Developer with an interest in building accessible, maintainable web applications and dependable APIs.",
+      profileCopy:
+        "Junior Full Stack Developer with an interest in building accessible, maintainable web applications and dependable APIs.",
       focus: "Current focus",
-      focusCopy: "Developing production-ready React interfaces and Node.js services, with testing and deployment workflows built in.",
+      focusCopy:
+        "Developing production-ready React interfaces and Node.js services, with testing and deployment workflows built in.",
       experience: "Experience highlights",
-      highlights: ["Call-center dashboard and API delivery", "Production and staging deployment workflows", "API documentation, testing, and CI/CD"],
+      highlights: [
+        "Call-center dashboard and API delivery",
+        "Production and staging deployment workflows",
+        "API documentation, testing, and CI/CD",
+      ],
     },
     footer: "Designed and built by Dimitris Giannopoulos.",
   },
   el: {
-    nav: { home: "Αρχική", projects: "Projects", cv: "Βιογραφικό", language: "Αλλαγή γλώσσας", theme: "Αλλαγή θέματος" },
+    nav: {
+      home: "Αρχική",
+      projects: "Projects",
+      cv: "Βιογραφικό",
+      language: "Αλλαγή γλώσσας",
+      theme: "Αλλαγή θέματος",
+    },
     hero: {
       eyebrow: "Διαθέσιμος για junior developer ευκαιρίες",
-      intro: "Δημιουργώ προσεγμένες και αξιόπιστες web εμπειρίες που μετατρέπουν πραγματικές ροές εργασίας σε καθαρά, χρήσιμα προϊόντα.",
+      intro:
+        "Δημιουργώ προσεγμένες και αξιόπιστες web εμπειρίες που μετατρέπουν πραγματικές ροές εργασίας σε καθαρά, χρήσιμα προϊόντα.",
       projects: "Δείτε τα projects",
       cv: "Δείτε το βιογραφικό",
       github: "GitHub",
@@ -69,16 +92,20 @@ export const translations = {
     home: {
       featuredEyebrow: "Επιλεγμένα έργα",
       featuredTitle: "Projects για πραγματικές ροές εργασίας.",
-      featuredCopy: "Μια σύντομη ματιά στις εφαρμογές και τα APIs που έχω δημιουργήσει, από το interface μέχρι το deployment.",
+      featuredCopy:
+        "Μια σύντομη ματιά στις εφαρμογές και τα APIs που έχω δημιουργήσει, από το interface μέχρι το deployment.",
       seeAll: "Όλα τα projects",
       skillsEyebrow: "Δεξιότητες",
       skillsTitle: "Ένα πρακτικό full-stack toolkit.",
-      skillsCopy: "Άνετος σε όλο τον κύκλο ζωής του προϊόντος — από responsive interfaces μέχρι APIs, testing και αξιόπιστο delivery.",
+      skillsCopy:
+        "Άνετος σε όλο τον κύκλο ζωής του προϊόντος — από responsive interfaces μέχρι APIs, testing και αξιόπιστο delivery.",
       socialEyebrow: "Επικοινωνία",
       socialTitle: "Δείτε τη δουλειά πίσω από τη δουλειά.",
-      socialCopy: "Εξερευνήστε τα repositories, δείτε τι δημιουργώ ή επικοινωνήστε μαζί μου απευθείας.",
+      socialCopy:
+        "Εξερευνήστε τα repositories, δείτε τι δημιουργώ ή επικοινωνήστε μαζί μου απευθείας.",
       cvTitle: "Ενδιαφέρεστε να συνεργαστούμε;",
-      cvCopy: "Δείτε την εμπειρία μου, την τεχνική κατεύθυνση και τα προβλήματα που μου αρέσει να λύνω.",
+      cvCopy:
+        "Δείτε την εμπειρία μου, την τεχνική κατεύθυνση και τα προβλήματα που μου αρέσει να λύνω.",
       cvButton: "Άνοιγμα βιογραφικού",
     },
     projects: {
@@ -101,11 +128,17 @@ export const translations = {
       download: "Download CV",
       comingSoon: "Το CV έρχεται σύντομα",
       profile: "Προφίλ",
-      profileCopy: "Junior Full Stack Developer με ενδιαφέρον για προσβάσιμες και διατηρήσιμες web εφαρμογές και αξιόπιστα APIs.",
+      profileCopy:
+        "Junior Full Stack Developer με ενδιαφέρον για προσβάσιμες και διατηρήσιμες web εφαρμογές και αξιόπιστα APIs.",
       focus: "Τρέχον focus",
-      focusCopy: "Ανάπτυξη production-ready React interfaces και Node.js services, με testing και deployment workflows ενσωματωμένα.",
+      focusCopy:
+        "Ανάπτυξη production-ready React interfaces και Node.js services, με testing και deployment workflows ενσωματωμένα.",
       experience: "Σημεία εμπειρίας",
-      highlights: ["Call-center dashboard και API delivery", "Production και staging deployment workflows", "API documentation, testing και CI/CD"],
+      highlights: [
+        "Call-center dashboard και API delivery",
+        "Production και staging deployment workflows",
+        "API documentation, testing και CI/CD",
+      ],
     },
     footer: "Σχεδιασμένο και δημιουργημένο από τον Δημήτρη Γιαννόπουλο.",
   },

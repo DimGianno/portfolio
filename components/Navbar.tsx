@@ -25,7 +25,11 @@ export function Navbar() {
         </Link>
         <div className="nav-links">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className={pathname === link.href ? "nav-link active" : "nav-link"}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={pathname === link.href ? "nav-link active" : "nav-link"}
+            >
               {link.label}
             </Link>
           ))}

@@ -17,8 +17,15 @@ export function Footer() {
         <p>{t.footer}</p>
         <div className="footer-links">
           {socialLinks.map(({ href, label, icon: Icon }) => (
-            <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="footer-link">
-              <Icon size={15} aria-hidden="true" /> {label} <ArrowUpRight size={13} aria-hidden="true" />
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noreferrer" : undefined}
+              className="footer-link"
+            >
+              <Icon size={15} aria-hidden="true" /> {label}{" "}
+              <ArrowUpRight size={13} aria-hidden="true" />
             </a>
           ))}
         </div>
