@@ -50,6 +50,15 @@ export const translations = {
       nextScreenshot: "Next screenshot",
       status: "Status",
       stack: "Stack",
+      documentation: "Project documentation",
+      syncedFromGitHub: "Selected sections, refreshed from GitHub every five minutes.",
+      roadmap: "Roadmap",
+      updates: "Updates",
+      viewFullDocument: "View the complete file on GitHub",
+      documentationUnavailable:
+        "This document is temporarily unavailable. You can still open the source file on GitHub.",
+      documentationEmpty: "No matching key sections were found in this document.",
+      englishSourceNotice: "The project documentation is maintained in English.",
     },
     cv: {
       eyebrow: "Curriculum vitae",
@@ -125,6 +134,15 @@ export const translations = {
       nextScreenshot: "Επόμενο screenshot",
       status: "Κατάσταση",
       stack: "Τεχνολογίες",
+      documentation: "Τεκμηρίωση project",
+      syncedFromGitHub: "Επιλεγμένες ενότητες, με ανανέωση από το GitHub κάθε πέντε λεπτά.",
+      roadmap: "Πλάνο εξέλιξης",
+      updates: "Ενημερώσεις",
+      viewFullDocument: "Προβολή ολόκληρου του αρχείου στο GitHub",
+      documentationUnavailable:
+        "Αυτό το έγγραφο δεν είναι προσωρινά διαθέσιμο. Μπορείτε να ανοίξετε το αρχικό αρχείο στο GitHub.",
+      documentationEmpty: "Δεν βρέθηκαν οι επιλεγμένες βασικές ενότητες σε αυτό το έγγραφο.",
+      englishSourceNotice: "Η τεκμηρίωση του project διατηρείται στα Αγγλικά.",
     },
     cv: {
       eyebrow: "Βιογραφικό",

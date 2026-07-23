@@ -14,6 +14,15 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 
 ## Latest Updates
 
+### 2026-07-23 - Live project roadmaps and updates
+
+- **Type:** Feature
+- **Status:** Completed
+- **Summary:** Added foldable project documentation sourced from each featured project's GitHub repository.
+- **User impact:** Visitors can review current status, key limitations, planned features, and the latest project changes directly from each full project card while retaining links to the complete source files.
+- **Technical impact:** The Projects route now refreshes public Markdown files every five minutes, selects sections deterministically, renders GitHub-flavored Markdown safely, and handles independent source failures without affecting the rest of the page.
+- **Related area:** Content and frontend
+
 ### 2026-07-23 - Downloadable CV and project galleries
 
 - **Type:** Feature
@@ -50,6 +59,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - Provide dedicated `/`, `/projects`, and `/cv` routes with route-specific metadata.
 - Display a web CV summary and contact links with an embedded and downloadable English PDF.
 - Present responsive, bilingual screenshot galleries for the frontend and backend Call Center projects.
+- Present collapsed, automatically refreshed roadmap and update sections for each project on the Projects page.
 - Apply responsive styling, theme-aware branding, and Framer Motion transitions.
 - Report production traffic through Vercel Web Analytics.
 - Redirect `www.dimgianno.com` requests to the canonical `dimgianno.com` domain.
@@ -60,6 +70,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - Modern Next.js App Router implementation with TypeScript, React 19, Tailwind CSS, and reusable content-driven components.
 - English and Greek presentation with persistent browser preferences and hydration-safe theme initialization.
 - Clear separation of content data from components for projects, skills, and translations.
+- Server-rendered project documentation sourced from GitHub with deterministic section selection and graceful per-file failure handling.
 - Production and staging visibility for both frontend and backend Call Center projects.
 - Automated continuous integration covering formatting, linting, type checking, unit tests, and the production build.
 - Vercel deployment configuration with canonical-domain redirects, metadata, and Web Analytics.
