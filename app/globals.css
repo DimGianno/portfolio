@@ -301,15 +301,6 @@ h1 {
   border-color: var(--line);
   background: var(--surface);
 }
-.button-disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-  background: var(--surface-alt);
-  color: var(--muted);
-}
-.button-disabled:hover {
-  transform: none;
-}
 .social-links {
   flex-wrap: wrap;
   justify-content: center;
@@ -393,43 +384,55 @@ h1 {
   background: var(--surface);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
 }
-.screenshot-placeholder {
+.project-gallery {
   position: relative;
-  height: 210px;
-  display: grid;
-  place-items: center;
+  height: clamp(280px, 36vw, 410px);
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent) 15%, var(--surface-alt)),
-    var(--surface-alt)
-  );
+  background: #111827;
   border-bottom: 1px solid var(--line);
 }
-.screenshot-placeholder.backend {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent-2) 17%, var(--surface-alt)),
-    var(--surface-alt)
-  );
+.project-card-compact .project-gallery {
+  height: 210px;
 }
-.placeholder-grid {
+.project-screenshot {
+  object-fit: contain;
+}
+.project-gallery-controls {
   position: absolute;
-  inset: 0;
-  opacity: 0.55;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(145deg, black, transparent 85%);
-}
-.placeholder-content {
-  position: relative;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
   display: flex;
   align-items: center;
-  gap: 9px;
-  color: var(--muted);
-  font-size: 0.85rem;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: white;
+  background: rgba(10, 13, 20, 0.82);
+  backdrop-filter: blur(8px);
+}
+.project-gallery-controls button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.project-gallery-controls button:hover,
+.project-gallery-controls button:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+}
+.project-gallery-controls span {
+  min-width: 44px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 .project-body {
   padding: 25px;
@@ -594,6 +597,45 @@ h1 {
   color: var(--muted);
   font-size: 0.88rem;
 }
+.cv-document-section {
+  padding-bottom: 0;
+}
+.cv-document-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.cv-document-heading .eyebrow {
+  margin-top: 0;
+}
+.cv-document-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.cv-document-shell {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+.cv-document {
+  width: 100%;
+  height: min(1120px, calc(100vh - 110px));
+  min-height: 720px;
+  display: block;
+  border: 0;
+}
+.cv-document p {
+  padding: 28px;
+  color: var(--muted);
+}
+.cv-document a {
+  color: var(--accent);
+  font-weight: 700;
+}
 .cv-layout {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -724,6 +766,20 @@ h1 {
 @media (max-width: 560px) {
   .container {
     width: min(100% - 28px, 1120px);
+  }
+  .project-gallery {
+    height: clamp(250px, 75vw, 330px);
+  }
+  .project-card-compact .project-gallery {
+    height: 230px;
+  }
+  .cv-document-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .cv-document {
+    height: 75vh;
+    min-height: 560px;
   }
   .nav-links {
     display: none;

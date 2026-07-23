@@ -14,6 +14,15 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 
 ## Latest Updates
 
+### 2026-07-23 - Downloadable CV and project galleries
+
+- **Type:** Feature
+- **Status:** Completed
+- **Summary:** Published the final English CV with an embedded viewer and replaced the project-card placeholders with responsive screenshot galleries.
+- **User impact:** Visitors can read or download the CV and browse frontend and backend screenshots without leaving the portfolio.
+- **Technical impact:** Project data now includes localized image descriptions, and reusable gallery controls support keyboard navigation across responsive layouts.
+- **Related area:** Content and frontend
+
 ### 2026-07-10 - Continuous integration and tooling baseline
 
 - **Type:** Maintenance
@@ -39,7 +48,8 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - Persist English or Greek language selection and light or dark theme preferences in local storage.
 - Respect the system color preference when no valid saved theme exists.
 - Provide dedicated `/`, `/projects`, and `/cv` routes with route-specific metadata.
-- Display a web CV summary and contact links while clearly marking the downloadable PDF as unavailable.
+- Display a web CV summary and contact links with an embedded and downloadable English PDF.
+- Present responsive, bilingual screenshot galleries for the frontend and backend Call Center projects.
 - Apply responsive styling, theme-aware branding, and Framer Motion transitions.
 - Report production traffic through Vercel Web Analytics.
 - Redirect `www.dimgianno.com` requests to the canonical `dimgianno.com` domain.
