@@ -13,8 +13,18 @@ import {
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { useSite } from "@/components/SiteProvider";
+import { ProjectDocumentationPanel } from "@/components/ProjectDocumentation";
+import type { ProjectDocumentation } from "@/lib/projectDocumentation";
 
-export function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
+export function ProjectCard({
+  project,
+  compact = false,
+  documentation,
+}: {
+  project: Project;
+  compact?: boolean;
+  documentation?: ProjectDocumentation;
+}) {
   const { locale, t } = useSite();
   const [activeScreenshot, setActiveScreenshot] = useState(0);
   const screenshot = project.screenshots[activeScreenshot];
@@ -99,13 +109,16 @@ export function ProjectCard({ project, compact = false }: { project: Project; co
           ))}
         </div>
         {!compact && (
-          <div className="project-links">
-            {links.map(({ href, label, icon: Icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer">
-                <Icon size={14} aria-hidden="true" /> {label}
-              </a>
-            ))}
-          </div>
+          <>
+            <div className="project-links">
+              {links.map(({ href, label, icon: Icon }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer">
+                  <Icon size={14} aria-hidden="true" /> {label}
+                </a>
+              ))}
+            </div>
+            {documentation && <ProjectDocumentationPanel documentation={documentation} />}
+          </>
         )}
       </div>
     </motion.article>

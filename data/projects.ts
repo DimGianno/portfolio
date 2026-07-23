@@ -8,6 +8,12 @@ export type Project = {
   stagingUrl: string;
   repositoryUrl: string;
   stagingBranchUrl: string;
+  documentation: {
+    repository: string;
+    branch: string;
+    roadmapPath: "PROJECT_ROADMAP.md";
+    updatesPath: "PROJECT_UPDATES.md";
+  };
   screenshots: {
     src: string;
     alt: { en: string; el: string };
@@ -34,6 +40,12 @@ export const projects: Project[] = [
     stagingUrl: "https://call-center-staging.dimgianno.com/",
     repositoryUrl: frontendRepository,
     stagingBranchUrl: `${frontendRepository}/tree/${STAGING_BRANCH}`,
+    documentation: {
+      repository: "DimGianno/Call-Center-Frontend",
+      branch: "main",
+      roadmapPath: "PROJECT_ROADMAP.md",
+      updatesPath: "PROJECT_UPDATES.md",
+    },
     screenshots: [
       {
         src: "/projects/call-center-frontend/01-dashboard.png",
@@ -80,6 +92,12 @@ export const projects: Project[] = [
     stagingUrl: "https://api-staging.call-center.dimgianno.com/api-docs",
     repositoryUrl: backendRepository,
     stagingBranchUrl: `${backendRepository}/tree/${STAGING_BRANCH}`,
+    documentation: {
+      repository: "DimGianno/Call-Center-BackEnd",
+      branch: "master",
+      roadmapPath: "PROJECT_ROADMAP.md",
+      updatesPath: "PROJECT_UPDATES.md",
+    },
     screenshots: [
       {
         src: "/projects/call-center-backend/01-swagger-api-docs.png",

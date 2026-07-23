@@ -4,8 +4,9 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { useSite } from "@/components/SiteProvider";
 import { projects } from "@/data/projects";
+import type { ProjectDocumentationMap } from "@/lib/projectDocumentation";
 
-export function ProjectsPageContent() {
+export function ProjectsPageContent({ documentation }: { documentation: ProjectDocumentationMap }) {
   const { t } = useSite();
   return (
     <>
@@ -20,7 +21,11 @@ export function ProjectsPageContent() {
         <div className="container">
           <div className="project-grid project-grid-full">
             {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                documentation={documentation[project.slug]}
+              />
             ))}
           </div>
         </div>

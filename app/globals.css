@@ -494,6 +494,151 @@ h1 {
   font-size: 0.82rem;
   font-weight: 700;
 }
+.project-documentation {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.project-documentation-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.project-documentation-heading h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+.project-documentation-heading p,
+.project-document-language-note,
+.project-document-message {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.project-document-language-note {
+  margin: -4px 0 14px;
+  padding: 9px 11px;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
+}
+.project-document-list {
+  display: grid;
+  gap: 9px;
+}
+.project-document-disclosure {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface-alt) 48%, transparent);
+}
+.project-document-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.project-document-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+.project-document-disclosure summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+.project-document-disclosure summary span {
+  display: grid;
+  gap: 3px;
+}
+.project-document-disclosure summary strong {
+  font-size: 0.9rem;
+}
+.project-document-disclosure summary small {
+  color: var(--muted);
+  font-size: 0.71rem;
+}
+.project-document-disclosure summary svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+.project-document-disclosure[open] summary svg {
+  transform: rotate(180deg);
+}
+.project-document-content {
+  padding: 2px 16px 16px;
+  border-top: 1px solid var(--line);
+}
+.project-markdown {
+  padding-top: 16px;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+.project-markdown h2,
+.project-markdown h3 {
+  color: var(--text);
+}
+.project-markdown h2 {
+  margin: 24px 0 10px;
+  font-size: 1.06rem;
+}
+.project-markdown h2:first-child {
+  margin-top: 0;
+}
+.project-markdown h3 {
+  margin: 19px 0 8px;
+  font-size: 0.94rem;
+}
+.project-markdown p,
+.project-markdown ul,
+.project-markdown ol {
+  margin: 8px 0;
+}
+.project-markdown ul,
+.project-markdown ol {
+  padding-left: 20px;
+}
+.project-markdown li + li {
+  margin-top: 5px;
+}
+.project-markdown code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: var(--text);
+  background: var(--surface);
+  font-size: 0.82em;
+}
+.project-markdown table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.project-markdown th,
+.project-markdown td {
+  padding: 7px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.project-document-message {
+  margin: 14px 0;
+}
+.project-document-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 13px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-document-disclosure summary svg {
+    transition: none;
+  }
+}
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
