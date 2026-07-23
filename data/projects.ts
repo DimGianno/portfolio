@@ -8,7 +8,10 @@ export type Project = {
   stagingUrl: string;
   repositoryUrl: string;
   stagingBranchUrl: string;
-  screenshotDirectory: string;
+  screenshots: {
+    src: string;
+    alt: { en: string; el: string };
+  }[];
 };
 
 // Change this one value whenever you intentionally promote a different branch to staging.
@@ -31,7 +34,29 @@ export const projects: Project[] = [
     stagingUrl: "https://call-center-staging.dimgianno.com/",
     repositoryUrl: frontendRepository,
     stagingBranchUrl: `${frontendRepository}/tree/${STAGING_BRANCH}`,
-    screenshotDirectory: "/projects/call-center-frontend/",
+    screenshots: [
+      {
+        src: "/projects/call-center-frontend/01-dashboard.png",
+        alt: {
+          en: "Call Center dashboard showing call totals and a paginated call list",
+          el: "Dashboard του Call Center με σύνολα και σελιδοποιημένη λίστα κλήσεων",
+        },
+      },
+      {
+        src: "/projects/call-center-frontend/02-call-details.png",
+        alt: {
+          en: "Call details panel with notes and call management actions",
+          el: "Πλαίσιο λεπτομερειών κλήσης με σημειώσεις και ενέργειες διαχείρισης",
+        },
+      },
+      {
+        src: "/projects/call-center-frontend/03-filters.png",
+        alt: {
+          en: "Call filters for type, direction, date range, and duration",
+          el: "Φίλτρα κλήσεων για τύπο, κατεύθυνση, ημερομηνίες και διάρκεια",
+        },
+      },
+    ],
   },
   {
     slug: "backend",
@@ -55,6 +80,21 @@ export const projects: Project[] = [
     stagingUrl: "https://api-staging.call-center.dimgianno.com/api-docs",
     repositoryUrl: backendRepository,
     stagingBranchUrl: `${backendRepository}/tree/${STAGING_BRANCH}`,
-    screenshotDirectory: "/projects/call-center-backend/",
+    screenshots: [
+      {
+        src: "/projects/call-center-backend/01-swagger-api-docs.png",
+        alt: {
+          en: "Swagger documentation listing the Call Center API endpoints",
+          el: "Τεκμηρίωση Swagger με τα endpoints του Call Center API",
+        },
+      },
+      {
+        src: "/projects/call-center-backend/02-api-get-calls-response.png",
+        alt: {
+          en: "Swagger example response from the Call Center calls endpoint",
+          el: "Παράδειγμα απόκρισης Swagger από το endpoint κλήσεων του Call Center",
+        },
+      },
+    ],
   },
 ];

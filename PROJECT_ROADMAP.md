@@ -8,26 +8,6 @@
 
 ## Known Limitations
 
-### Downloadable CV is not available
-
-- **Area:** Content
-- **Severity:** High
-- **User impact:** Visitors can read the web CV but cannot download the final English PDF.
-- **Technical impact:** The CV download control is intentionally disabled, and `public/cv/` contains only a placeholder file.
-- **Current workaround:** Use the web CV and its email or LinkedIn contact links.
-- **Suggested resolution:** Add the final PDF at the documented public path and replace the disabled control with a download link.
-- **Status:** Known
-
-### Project screenshots are placeholders
-
-- **Area:** Content
-- **Severity:** Medium
-- **User impact:** Project cards describe and link to the work but do not provide visual previews.
-- **Technical impact:** Both project asset directories contain only placeholder files, and the cards render a screenshot-coming-soon state.
-- **Current workaround:** Open the production or staging links from the projects page to view each application.
-- **Suggested resolution:** Add representative optimized screenshots for both projects and render them with accessible alternative text.
-- **Status:** Known
-
 ### Automated tests cover only site preferences
 
 - **Area:** Quality
@@ -49,26 +29,6 @@
 - **Status:** Known
 
 ## Next Features
-
-### Publish the downloadable CV
-
-- **Priority:** High
-- **Status:** Planned
-- **Value:** Gives recruiters and collaborators a portable version of the portfolio owner's experience and contact information.
-- **Scope:** Add the final English PDF at the documented path and enable the existing CV download control.
-- **Dependencies:** Final approved CV content and PDF asset
-- **Complexity:** Low
-- **Portfolio relevance:** Completes a primary portfolio conversion path.
-
-### Add project imagery
-
-- **Priority:** High
-- **Status:** Planned
-- **Value:** Lets visitors understand each project's interface and character before leaving the portfolio.
-- **Scope:** Add optimized frontend and backend project images, render them responsively, and preserve the current card links and descriptions.
-- **Dependencies:** Approved screenshots from the production applications
-- **Complexity:** Low
-- **Portfolio relevance:** Improves the visual evidence supporting the featured work.
 
 ### Expand project case studies
 
@@ -108,10 +68,10 @@
 
 ## Suggested Next Milestones
 
-1. **Complete portfolio content**
+1. **Complete portfolio content — Completed 2026-07-23**
    - Goal: Replace the remaining public placeholders with final portfolio assets.
    - Included work: Publish the CV PDF, add project screenshots, verify download and project links, and update documentation.
-   - Completion criteria: The CV downloads successfully, every project has an optimized visual preview, and all public links resolve as intended.
+   - Completion criteria: The CV displays and downloads successfully, every project has an optimized visual preview, and all public links resolve as intended.
 
 2. **Strengthen visitor-journey verification**
    - Goal: Protect the portfolio's primary interactions across routes and viewport sizes.

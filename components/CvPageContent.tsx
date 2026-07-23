@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, FileText, Sparkles } from "lucide-react";
+import { Download, ExternalLink, FileText, Sparkles } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { useSite } from "@/components/SiteProvider";
 
@@ -14,13 +14,45 @@ export function CvPageContent() {
           <h1>{t.cv.title}</h1>
           <p>{t.cv.copy}</p>
           <div className="cv-download-wrap">
-            <button type="button" className="button button-disabled" disabled aria-disabled="true">
+            <a href="/cv/dimitris-giannopoulos-cv.pdf" className="button button-primary" download>
               <Download size={17} aria-hidden="true" /> {t.cv.download}
-            </button>
-            <span>{t.cv.comingSoon}</span>
+            </a>
           </div>
         </div>
       </section>
+      <AnimatedSection className="section cv-document-section">
+        <div className="container">
+          <div className="cv-document-heading">
+            <div>
+              <p className="eyebrow">{t.cv.documentEyebrow}</p>
+              <h2>{t.cv.documentTitle}</h2>
+            </div>
+            <a
+              href="/cv/dimitris-giannopoulos-cv.pdf"
+              className="button button-secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalLink size={17} aria-hidden="true" /> {t.cv.openPdf}
+            </a>
+          </div>
+          <div className="cv-document-shell">
+            <object
+              data="/cv/dimitris-giannopoulos-cv.pdf#view=FitH"
+              type="application/pdf"
+              className="cv-document"
+              aria-label={t.cv.documentTitle}
+            >
+              <p>
+                {t.cv.pdfFallback}{" "}
+                <a href="/cv/dimitris-giannopoulos-cv.pdf" target="_blank" rel="noreferrer">
+                  {t.cv.openPdf}
+                </a>
+              </p>
+            </object>
+          </div>
+        </div>
+      </AnimatedSection>
       <AnimatedSection className="section section-last">
         <div className="container cv-layout">
           <article className="cv-profile-card">

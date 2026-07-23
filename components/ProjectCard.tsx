@@ -1,12 +1,23 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, ExternalLink, GitBranch, ImageIcon } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Code2,
+  ExternalLink,
+  GitBranch,
+} from "lucide-react";
 import type { Project } from "@/data/projects";
 import { useSite } from "@/components/SiteProvider";
 
 export function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
   const { locale, t } = useSite();
+  const [activeScreenshot, setActiveScreenshot] = useState(0);
+  const screenshot = project.screenshots[activeScreenshot];
   const links = [
     { href: project.productionUrl, label: t.projects.production, icon: ExternalLink },
     { href: project.stagingUrl, label: t.projects.staging, icon: ExternalLink },
@@ -14,14 +25,60 @@ export function ProjectCard({ project, compact = false }: { project: Project; co
     { href: project.stagingBranchUrl, label: t.projects.stagingBranch, icon: Code2 },
   ];
 
+  const showPreviousScreenshot = () => {
+    setActiveScreenshot((current) =>
+      current === 0 ? project.screenshots.length - 1 : current - 1,
+    );
+  };
+
+  const showNextScreenshot = () => {
+    setActiveScreenshot((current) => (current + 1) % project.screenshots.length);
+  };
+
   return (
-    <motion.article className="project-card" whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
-      <div className={`screenshot-placeholder ${project.slug}`} aria-label={t.projects.screenshot}>
-        <div className="placeholder-grid" />
-        <div className="placeholder-content">
-          <ImageIcon size={22} aria-hidden="true" />
-          <span>{t.projects.screenshotSoon}</span>
-        </div>
+    <motion.article
+      className={`project-card${compact ? " project-card-compact" : ""}`}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.2 }}
+    >
+      <div
+        className={`project-gallery ${project.slug}`}
+        role="group"
+        aria-label={`${project.title}: ${t.projects.screenshot}`}
+      >
+        <Image
+          key={screenshot.src}
+          src={screenshot.src}
+          alt={screenshot.alt[locale]}
+          fill
+          className="project-screenshot"
+          sizes={
+            compact
+              ? "(max-width: 800px) calc(100vw - 28px), 550px"
+              : "(max-width: 800px) calc(100vw - 28px), 1120px"
+          }
+        />
+        {project.screenshots.length > 1 && (
+          <div className="project-gallery-controls">
+            <button
+              type="button"
+              onClick={showPreviousScreenshot}
+              aria-label={`${t.projects.previousScreenshot}: ${project.title}`}
+            >
+              <ChevronLeft size={18} aria-hidden="true" />
+            </button>
+            <span aria-live="polite">
+              {activeScreenshot + 1} / {project.screenshots.length}
+            </span>
+            <button
+              type="button"
+              onClick={showNextScreenshot}
+              aria-label={`${t.projects.nextScreenshot}: ${project.title}`}
+            >
+              <ChevronRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </div>
       <div className="project-body">
         <div className="project-heading">

@@ -33,8 +33,8 @@ for tools that still depend on the legacy programmatic API.
 ## Content and assets
 
 - **Theme-aware logos:** The existing `public/logos/DG logo white.png` is used in dark mode and `public/logos/DG logo dark.png` in light mode.
-- **CV PDF:** Add the final English PDF at `public/cv/dimitris-giannopoulos-cv.pdf`. Then update `components/CvPageContent.tsx` to change the disabled button into a link to `/cv/dimitris-giannopoulos-cv.pdf`.
-- **Project screenshots:** Put screenshots in `public/projects/call-center-frontend/` and `public/projects/call-center-backend/`. The cards intentionally display a placeholder until real images are wired in.
+- **CV PDF:** The embedded and downloadable English CV is stored at `public/cv/dimitris-giannopoulos-cv.pdf`.
+- **Project screenshots:** Screenshots are stored in `public/projects/call-center-frontend/` and `public/projects/call-center-backend/`. Their paths and localized descriptions are configured in `data/projects.ts` and displayed in responsive galleries.
 - **Staging branch:** Edit the single `STAGING_BRANCH` value in `data/projects.ts` whenever you deliberately want the staging branch link to point elsewhere. Staging app and API URLs remain fixed; no automatic branch selection is used.
 - **Text and skills:** Edit `data/translations.ts`, `data/skills.ts`, and `data/projects.ts` rather than repeating content inside components.
 
@@ -50,4 +50,4 @@ for tools that still depend on the legacy programmatic API.
 
 - `/` — home
 - `/projects` — project portfolio
-- `/cv` — web CV placeholder
+- `/cv` — web CV with an embedded and downloadable English PDF
