@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -142,44 +142,38 @@ export function Hero() {
             }}
           >
             <div className="hero-credential-viewport">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.a
-                  key={activeCredential.id}
-                  href={activeCredential.verificationUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hero-credential-card"
-                  aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
-                  initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={shouldReduceMotion ? undefined : { opacity: 0, x: -24 }}
-                  transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
-                >
-                  <span className="hero-credential-logo">
-                    <Image
-                      src={activeCredential.image}
-                      alt=""
-                      width={64}
-                      height={64}
-                      aria-hidden="true"
-                    />
+              <a
+                key={activeCredential.id}
+                href={activeCredential.verificationUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hero-credential-card"
+                aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
+              >
+                <span className="hero-credential-logo">
+                  <Image
+                    src={activeCredential.image}
+                    alt=""
+                    width={64}
+                    height={64}
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className="hero-credential-copy">
+                  <span className="hero-credential-status">
+                    <BadgeCheck size={15} aria-hidden="true" />
+                    {t.hero.verifiedCredential}
                   </span>
-                  <span className="hero-credential-copy">
-                    <span className="hero-credential-status">
-                      <BadgeCheck size={15} aria-hidden="true" />
-                      {t.hero.verifiedCredential}
-                    </span>
-                    <strong>{activeCredential.title}</strong>
-                    <span>
-                      {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
-                      {credentialDateFormatter.format(
-                        new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
-                      )}
-                    </span>
+                  <strong>{activeCredential.title}</strong>
+                  <span>
+                    {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
+                    {credentialDateFormatter.format(
+                      new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
+                    )}
                   </span>
-                  <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
-                </motion.a>
-              </AnimatePresence>
+                </span>
+                <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
+              </a>
             </div>
             {credentials.length > 1 ? (
               <div className="hero-credential-controls">

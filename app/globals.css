@@ -341,6 +341,7 @@ h1 {
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   box-shadow: 0 12px 35px color-mix(in srgb, var(--accent) 8%, transparent);
   text-align: left;
+  animation: hero-credential-enter 3s cubic-bezier(0.22, 1, 0.36, 1) both;
   transition:
     transform 0.2s,
     border-color 0.2s,
@@ -439,10 +440,23 @@ h1 {
   border-color: var(--accent);
   background: var(--accent);
 }
+@keyframes hero-credential-enter {
+  from {
+    opacity: 0;
+    transform: translateX(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero-credential-card,
   .hero-credential-dots button {
     transition: none;
+  }
+  .hero-credential-card {
+    animation: none;
   }
 }
 .social-link {
