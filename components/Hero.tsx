@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight, BriefcaseBusiness, Code2, FileText, Mail } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, BadgeCheck, BriefcaseBusiness, Code2, FileText, Mail } from "lucide-react";
 import { ThemedLogo } from "@/components/ThemedLogo";
 import { useSite } from "@/components/SiteProvider";
+import { credentials } from "@/data/credentials";
 
 const socialLinks = [
   { href: "https://github.com/DimGianno", key: "github", icon: Code2 },
@@ -14,7 +16,14 @@ const socialLinks = [
 
 export function Hero() {
   const { locale, t } = useSite();
+  const shouldReduceMotion = useReducedMotion();
   const name = locale === "el" ? "Δημήτρης Γιαννόπουλος" : "Dimitris Giannopoulos";
+  const credentialDateFormatter = new Intl.DateTimeFormat(locale === "el" ? "el-GR" : "en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 
   return (
     <section className="hero">
@@ -74,9 +83,47 @@ export function Hero() {
           </Link>
         </motion.div>
         <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.54 }}
+          className="hero-credentials"
+        >
+          <p className="hero-credentials-label">{t.hero.featuredCredential}</p>
+          <div className="hero-credential-list">
+            {credentials.map((credential) => (
+              <a
+                key={credential.id}
+                href={credential.verificationUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hero-credential-card"
+                aria-label={`${t.hero.verifyCredential}: ${credential.title}`}
+              >
+                <span className="hero-credential-logo">
+                  <Image src={credential.image} alt="" width={64} height={64} aria-hidden="true" />
+                </span>
+                <span className="hero-credential-copy">
+                  <span className="hero-credential-status">
+                    <BadgeCheck size={15} aria-hidden="true" />
+                    {t.hero.verifiedCredential}
+                  </span>
+                  <strong>{credential.title}</strong>
+                  <span>
+                    {t.hero.issuedBy} {credential.issuer} ·{" "}
+                    {credentialDateFormatter.format(
+                      new Date(`${credential.issuedOn}T00:00:00.000Z`),
+                    )}
+                  </span>
+                </span>
+                <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.54 }}
+          transition={{ delay: 0.62 }}
           className="social-links"
         >
           {socialLinks.map(({ href, key, icon: Icon }) => (

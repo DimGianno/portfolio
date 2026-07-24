@@ -18,6 +18,10 @@ export const translations = {
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "Email",
+      featuredCredential: "Featured credential",
+      verifiedCredential: "Verified credential",
+      issuedBy: "Issued by",
+      verifyCredential: "Verify credential",
     },
     home: {
       featuredEyebrow: "Selected work",
@@ -117,6 +121,10 @@ export const translations = {
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "Email",
+      featuredCredential: "Προβεβλημένη πιστοποίηση",
+      verifiedCredential: "Επαληθευμένη πιστοποίηση",
+      issuedBy: "Εκδόθηκε από",
+      verifyCredential: "Επαλήθευση πιστοποίησης",
     },
     home: {
       featuredEyebrow: "Επιλεγμένα έργα",
