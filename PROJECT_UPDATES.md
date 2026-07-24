@@ -10,9 +10,18 @@
 
 ## Current Project Summary
 
-dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next.js App Router, React, TypeScript, Tailwind CSS, and Framer Motion. It presents selected frontend and backend work, technical skills, social links, and a web CV in English and Greek. Theme and language preferences persist in the browser, while Vercel provides hosting, Web Analytics, and the canonical production domain.
+dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next.js App Router, React, TypeScript, Tailwind CSS, and Framer Motion. It presents selected frontend and backend work, technical skills, a verified professional credential, social links, and a web CV in English and Greek. Theme and language preferences persist in the browser, while Vercel provides hosting, Web Analytics, and the canonical production domain.
 
 ## Latest Updates
+
+### 2026-07-24 - Verified hero credentials
+
+- **Type:** Feature
+- **Status:** Completed
+- **Summary:** Added the verified DevReady Accelerator Program and MongoDB Overview credentials to the home-page hero.
+- **User impact:** Visitors can see each credential's issuer and issue date and open its public verification page directly.
+- **Technical impact:** Credential details are stored as structured content, official issuer artwork is served locally, and an accessible, responsive carousel provides five-second rotation with border timing feedback, desktop arrow and dot navigation, mobile swiping, hover and keyboard-focus pausing, and motion-free transitions when reduced motion is requested.
+- **Related area:** Content and frontend
 
 ### 2026-07-24 - Live GitHub contribution calendar
 
@@ -62,6 +71,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 ## Current Capabilities
 
 - Present a bilingual home page with profile, featured-project, skills, social, and CV sections.
+- Present responsive, bilingual hero credentials with direct public verification links.
 - Present a responsive, bilingual GitHub contribution calendar with light and dark theme support.
 - List the Call Center frontend and backend projects with technology stacks and links to production, staging, source repositories, and staging branches.
 - Persist English or Greek language selection and light or dark theme preferences in local storage.

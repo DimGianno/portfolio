@@ -8,12 +8,12 @@
 
 ## Known Limitations
 
-### Automated tests cover only site preferences
+### Automated tests do not cover every visitor journey
 
 - **Area:** Quality
 - **Severity:** Medium
-- **User impact:** Navigation, project links, localized content, and CV states have less automated regression protection.
-- **Technical impact:** The current test suite exercises saved language and theme behavior but does not cover the other components or routes.
+- **User impact:** Navigation, project links, and CV states have less automated regression protection.
+- **Technical impact:** The current test suite covers saved preferences, hero credentials, project documentation, and GitHub contribution data, but it does not cover every component or route.
 - **Current workaround:** CI still runs formatting, linting, type checking, the existing unit tests, and a production build.
 - **Suggested resolution:** Add focused component and route tests for the portfolio's primary visitor journeys.
 - **Status:** Known
@@ -45,7 +45,7 @@
 ### Expand component and route coverage
 
 - **Priority:** High
-- **Reason:** Current automated tests validate only persisted site preferences.
+- **Reason:** Current automated tests cover several focused components and data paths but not every primary visitor journey.
 - **Expected outcome:** Navigation, localization, project presentation, external links, and CV behavior receive focused regression coverage.
 - **Affected area:** Public routes, shared components, and the Vitest test suite
 - **Status:** Idea
