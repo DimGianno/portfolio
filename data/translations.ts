@@ -29,6 +29,22 @@ export const translations = {
       skillsTitle: "A practical, full-stack toolkit.",
       skillsCopy:
         "Comfortable across the product lifecycle—from responsive interfaces to APIs, testing, and reliable delivery.",
+      githubEyebrow: "GitHub activity",
+      githubTitle: "Building consistently, one contribution at a time.",
+      githubCopy:
+        "A live view of my public development activity across commits, pull requests, issues, and reviews.",
+      githubTotalSuffix: "contributions in the last year",
+      githubView: "View GitHub profile",
+      githubLess: "Less",
+      githubMore: "More",
+      githubContribution: "contribution",
+      githubContributions: "contributions",
+      githubActivityNote: "Updated from GitHub every hour.",
+      githubLegendLabel: "Contribution activity from less to more",
+      githubScrollLabel: "GitHub contribution calendar. Scroll horizontally to view every week.",
+      githubUnavailable: "GitHub activity",
+      githubUnavailableCopy:
+        "The contribution calendar is temporarily unavailable. Visit my GitHub profile to see the latest activity.",
       socialEyebrow: "Let’s connect",
       socialTitle: "Find the work behind the work.",
       socialCopy: "Explore the repositories, follow what I am building, or get in touch directly.",
@@ -112,6 +128,23 @@ export const translations = {
       skillsTitle: "Ένα πρακτικό full-stack toolkit.",
       skillsCopy:
         "Άνετος σε όλο τον κύκλο ζωής του προϊόντος — από responsive interfaces μέχρι APIs, testing και αξιόπιστο delivery.",
+      githubEyebrow: "Δραστηριότητα GitHub",
+      githubTitle: "Σταθερή εξέλιξη, μία συνεισφορά τη φορά.",
+      githubCopy:
+        "Μια ζωντανή εικόνα της δημόσιας δραστηριότητάς μου σε commits, pull requests, issues και reviews.",
+      githubTotalSuffix: "συνεισφορές τον τελευταίο χρόνο",
+      githubView: "Προβολή προφίλ GitHub",
+      githubLess: "Λιγότερες",
+      githubMore: "Περισσότερες",
+      githubContribution: "συνεισφορά",
+      githubContributions: "συνεισφορές",
+      githubActivityNote: "Ενημέρωση από το GitHub κάθε ώρα.",
+      githubLegendLabel: "Δραστηριότητα συνεισφορών από λιγότερες σε περισσότερες",
+      githubScrollLabel:
+        "Ημερολόγιο συνεισφορών GitHub. Κυλήστε οριζόντια για να δείτε όλες τις εβδομάδες.",
+      githubUnavailable: "Δραστηριότητα GitHub",
+      githubUnavailableCopy:
+        "Το ημερολόγιο συνεισφορών δεν είναι προσωρινά διαθέσιμο. Επισκεφθείτε το προφίλ μου στο GitHub για την πιο πρόσφατη δραστηριότητα.",
       socialEyebrow: "Επικοινωνία",
       socialTitle: "Δείτε τη δουλειά πίσω από τη δουλειά.",
       socialCopy:

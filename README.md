@@ -11,6 +11,10 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+Copy `.env.example` to `.env.local` and set `GITHUB_TOKEN` to a GitHub token with
+read access to the profile contribution calendar. The token is used only by the server and enables
+the live GitHub contribution graph on the home page.
+
 ## Production build
 
 ```bash
@@ -38,11 +42,12 @@ for tools that still depend on the legacy programmatic API.
 - **Project documentation:** Each full project card reads `PROJECT_ROADMAP.md` and `PROJECT_UPDATES.md` from the repository and branch configured in `data/projects.ts`. The Projects page refreshes selected sections from GitHub at most every five minutes, keeps each document collapsed initially, and links to the complete source file. Public repositories require no GitHub token.
 - **Staging branch:** Edit the single `STAGING_BRANCH` value in `data/projects.ts` whenever you deliberately want the staging branch link to point elsewhere. Staging app and API URLs remain fixed; no automatic branch selection is used.
 - **Text and skills:** Edit `data/translations.ts`, `data/skills.ts`, and `data/projects.ts` rather than repeating content inside components.
+- **GitHub activity:** The home page reads the `DimGianno` contribution calendar through GitHub's GraphQL API, caches successful requests for one hour, and shows a profile link if the calendar is unavailable. Configure `GITHUB_TOKEN` locally and in Vercel; private contribution counts require the relevant GitHub profile visibility and token permissions.
 
 ## Deploy to Vercel
 
 1. Push this repository to GitHub and import it in Vercel, or run `vercel` from the repository after signing in.
-2. Vercel detects Next.js automatically. No environment variables are needed for this static portfolio.
+2. Vercel detects Next.js automatically. Add `GITHUB_TOKEN` to the Vercel project's environment variables so the home-page contribution calendar can load.
 3. In Vercel, add `dimgianno.com` as the production domain and add `www.dimgianno.com` as a second domain.
 4. Point the DNS records shown by Vercel at your domain provider. `vercel.json` redirects `www.dimgianno.com` to `dimgianno.com`.
 5. Enable Web Analytics in the Vercel project dashboard. The `<Analytics />` component is already included in `app/layout.tsx`.

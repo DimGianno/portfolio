@@ -2,7 +2,7 @@
 
 ## Latest Stable State
 
-- **Last updated:** 2026-07-23
+- **Last updated:** 2026-07-24
 - **Current version:** 0.2.0
 - **Current status:** Active
 - **Primary branch:** `main`
@@ -13,6 +13,15 @@
 dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next.js App Router, React, TypeScript, Tailwind CSS, and Framer Motion. It presents selected frontend and backend work, technical skills, social links, and a web CV in English and Greek. Theme and language preferences persist in the browser, while Vercel provides hosting, Web Analytics, and the canonical production domain.
 
 ## Latest Updates
+
+### 2026-07-24 - Live GitHub contribution calendar
+
+- **Type:** Feature
+- **Status:** Completed
+- **Summary:** Added a responsive GitHub contribution calendar to the home page.
+- **User impact:** Visitors can see the past year of development activity in a theme-aware, bilingual calendar and open the full GitHub profile directly.
+- **Technical impact:** The portfolio now reads contribution data through GitHub's GraphQL API on the server, caches successful requests for one hour, keeps the access token private, and falls back gracefully when the calendar is unavailable.
+- **Related area:** Content and frontend
 
 ### 2026-07-23 - Live project roadmaps and updates
 
@@ -53,6 +62,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 ## Current Capabilities
 
 - Present a bilingual home page with profile, featured-project, skills, social, and CV sections.
+- Present a responsive, bilingual GitHub contribution calendar with light and dark theme support.
 - List the Call Center frontend and backend projects with technology stacks and links to production, staging, source repositories, and staging branches.
 - Persist English or Greek language selection and light or dark theme preferences in local storage.
 - Respect the system color preference when no valid saved theme exists.
@@ -71,6 +81,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - English and Greek presentation with persistent browser preferences and hydration-safe theme initialization.
 - Clear separation of content data from components for projects, skills, and translations.
 - Server-rendered project documentation sourced from GitHub with deterministic section selection and graceful per-file failure handling.
+- Server-fetched GitHub contribution activity with hourly caching and a graceful unavailable state.
 - Production and staging visibility for both frontend and backend Call Center projects.
 - Automated continuous integration covering formatting, linting, type checking, unit tests, and the production build.
 - Vercel deployment configuration with canonical-domain redirects, metadata, and Web Analytics.
