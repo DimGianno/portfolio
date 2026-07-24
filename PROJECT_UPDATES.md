@@ -14,13 +14,13 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 
 ## Latest Updates
 
-### 2026-07-24 - Verified hero credential
+### 2026-07-24 - Verified hero credentials
 
 - **Type:** Feature
 - **Status:** Completed
-- **Summary:** Added the verified DevReady Accelerator Program credential to the home-page hero.
-- **User impact:** Visitors can see the credential's issuer and issue date and open its public Sertifier verification page directly.
-- **Technical impact:** Credential details are stored as structured content, the official issuer artwork is served locally, and the responsive card supports both site languages and themes.
+- **Summary:** Added the verified DevReady Accelerator Program and MongoDB Overview credentials to the home-page hero.
+- **User impact:** Visitors can see each credential's issuer and issue date and open its public verification page directly.
+- **Technical impact:** Credential details are stored as structured content, official issuer artwork is served locally, and an accessible, responsive carousel provides automatic rotation, manual controls, pause behavior, and reduced-motion support in both site languages and themes.
 - **Related area:** Content and frontend
 
 ### 2026-07-24 - Live GitHub contribution calendar
@@ -71,7 +71,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 ## Current Capabilities
 
 - Present a bilingual home page with profile, featured-project, skills, social, and CV sections.
-- Present a responsive, bilingual hero credential with a direct public verification link.
+- Present responsive, bilingual hero credentials with direct public verification links.
 - Present a responsive, bilingual GitHub contribution calendar with light and dark theme support.
 - List the Call Center frontend and backend projects with technology stacks and links to production, staging, source repositories, and staging branches.
 - Persist English or Greek language selection and light or dark theme preferences in local storage.

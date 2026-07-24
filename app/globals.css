@@ -319,12 +319,17 @@ h1 {
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
-.hero-credential-list {
-  display: flex;
-  justify-content: center;
+.hero-credential-carousel {
+  width: min(100%, 560px);
+  margin-inline: auto;
+}
+.hero-credential-viewport {
+  overflow: hidden;
+  margin: -4px;
+  padding: 4px;
 }
 .hero-credential-card {
-  width: min(100%, 520px);
+  width: 100%;
   min-width: 0;
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) auto;
@@ -386,8 +391,57 @@ h1 {
 .hero-credential-arrow {
   color: var(--accent);
 }
+.hero-credential-controls,
+.hero-credential-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-credential-controls {
+  gap: 10px;
+  margin-top: 10px;
+}
+.hero-credential-control,
+.hero-credential-dots button {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  cursor: pointer;
+}
+.hero-credential-control {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 8px;
+}
+.hero-credential-control:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+}
+.hero-credential-dots {
+  gap: 6px;
+}
+.hero-credential-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  transition:
+    width 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.hero-credential-dots button.active {
+  width: 20px;
+  border-radius: 999px;
+  border-color: var(--accent);
+  background: var(--accent);
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-credential-card {
+  .hero-credential-card,
+  .hero-credential-dots button {
     transition: none;
   }
 }
