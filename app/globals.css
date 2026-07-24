@@ -655,7 +655,7 @@ h1 {
   font-size: 1.15rem;
 }
 .github-contributions-section {
-  padding-top: 0;
+  padding-top: 64px;
 }
 .github-contribution-card {
   --contribution-0: color-mix(in srgb, var(--surface-alt) 82%, var(--line));
@@ -1027,6 +1027,9 @@ h1 {
   color: var(--text);
 }
 @media (max-width: 800px) {
+  .github-contributions-section {
+    padding-top: 0;
+  }
   .nav {
     min-height: 64px;
     gap: 12px;
