@@ -327,6 +327,7 @@ h1 {
   overflow: hidden;
   margin: -4px;
   padding: 4px;
+  touch-action: pan-y;
 }
 .hero-credential-card {
   width: 100%;
@@ -440,6 +441,34 @@ h1 {
   border-color: var(--accent);
   background: var(--accent);
 }
+.hero-credential-counter {
+  min-width: 34px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  text-align: center;
+}
+.hero-credential-progress {
+  height: 2px;
+  margin: 8px 4px 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--line) 82%, transparent);
+}
+.hero-credential-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hero-credential-progress 5s linear forwards;
+}
+.hero-credential-progress span.paused {
+  animation: none;
+}
 @keyframes hero-credential-enter {
   from {
     opacity: 0;
@@ -450,6 +479,11 @@ h1 {
     transform: translateX(0) scale(1);
   }
 }
+@keyframes hero-credential-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero-credential-card,
   .hero-credential-dots button {
@@ -457,6 +491,10 @@ h1 {
   }
   .hero-credential-card {
     animation: none;
+  }
+  .hero-credential-progress span {
+    animation: none;
+    transform: scaleX(1);
   }
 }
 .social-link {

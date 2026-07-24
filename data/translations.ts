@@ -26,6 +26,10 @@ export const translations = {
       previousCredential: "Previous credential",
       nextCredential: "Next credential",
       viewCredential: "View credential",
+      credentialPosition: "Credential",
+      of: "of",
+      pauseCredentialCarousel: "Pause credential rotation",
+      playCredentialCarousel: "Play credential rotation",
     },
     home: {
       featuredEyebrow: "Selected work",
@@ -133,6 +137,10 @@ export const translations = {
       previousCredential: "Προηγούμενη πιστοποίηση",
       nextCredential: "Επόμενη πιστοποίηση",
       viewCredential: "Προβολή πιστοποίησης",
+      credentialPosition: "Πιστοποίηση",
+      of: "από",
+      pauseCredentialCarousel: "Παύση εναλλαγής πιστοποιήσεων",
+      playCredentialCarousel: "Έναρξη εναλλαγής πιστοποιήσεων",
     },
     home: {
       featuredEyebrow: "Επιλεγμένα έργα",

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FocusEvent, TouchEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -13,6 +14,8 @@ import {
   Code2,
   FileText,
   Mail,
+  Pause,
+  Play,
 } from "lucide-react";
 import { ThemedLogo } from "@/components/ThemedLogo";
 import { useSite } from "@/components/SiteProvider";
@@ -24,11 +27,18 @@ const socialLinks = [
   { href: "mailto:giannopoulos1996@icloud.com", key: "email", icon: Mail },
 ] as const;
 
+const CREDENTIAL_ROTATION_INTERVAL = 5000;
+const CREDENTIAL_SWIPE_THRESHOLD = 45;
+
 export function Hero() {
   const { locale, t } = useSite();
   const shouldReduceMotion = useReducedMotion();
   const [activeCredentialIndex, setActiveCredentialIndex] = useState(0);
   const [isCredentialCarouselPaused, setIsCredentialCarouselPaused] = useState(false);
+  const [isCredentialCarouselFocusPaused, setIsCredentialCarouselFocusPaused] = useState(false);
+  const credentialSwipeStart = useRef<{ x: number; y: number } | null>(null);
+  const isCredentialAutoRotationPaused =
+    isCredentialCarouselPaused || isCredentialCarouselFocusPaused;
   const name = locale === "el" ? "Δημήτρης Γιαννόπουλος" : "Dimitris Giannopoulos";
   const activeCredential = credentials[activeCredentialIndex];
   const credentialDateFormatter = new Intl.DateTimeFormat(locale === "el" ? "el-GR" : "en-GB", {
@@ -39,14 +49,14 @@ export function Hero() {
   });
 
   useEffect(() => {
-    if (credentials.length < 2 || shouldReduceMotion || isCredentialCarouselPaused) return;
+    if (credentials.length < 2 || isCredentialAutoRotationPaused) return;
 
     const intervalId = window.setInterval(() => {
       setActiveCredentialIndex((current) => (current + 1) % credentials.length);
-    }, 5000);
+    }, CREDENTIAL_ROTATION_INTERVAL);
 
     return () => window.clearInterval(intervalId);
-  }, [activeCredentialIndex, isCredentialCarouselPaused, shouldReduceMotion]);
+  }, [activeCredentialIndex, isCredentialAutoRotationPaused]);
 
   const showPreviousCredential = () => {
     setActiveCredentialIndex((current) => (current - 1 + credentials.length) % credentials.length);
@@ -54,6 +64,46 @@ export function Hero() {
 
   const showNextCredential = () => {
     setActiveCredentialIndex((current) => (current + 1) % credentials.length);
+  };
+
+  const handleCredentialCarouselFocus = (event: FocusEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    setIsCredentialCarouselFocusPaused(target.dataset.carouselRotationControl !== "true");
+  };
+
+  const handleCredentialCarouselBlur = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) {
+      setIsCredentialCarouselFocusPaused(false);
+    }
+  };
+
+  const handleCredentialTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    credentialSwipeStart.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleCredentialTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.changedTouches[0];
+    const start = credentialSwipeStart.current;
+    credentialSwipeStart.current = null;
+    if (!touch || !start) return;
+
+    const horizontalDistance = touch.clientX - start.x;
+    const verticalDistance = touch.clientY - start.y;
+    if (
+      Math.abs(horizontalDistance) < CREDENTIAL_SWIPE_THRESHOLD ||
+      Math.abs(horizontalDistance) <= Math.abs(verticalDistance)
+    ) {
+      return;
+    }
+
+    if (horizontalDistance < 0) {
+      showNextCredential();
+    } else {
+      showPreviousCredential();
+    }
   };
 
   return (
@@ -125,23 +175,14 @@ export function Hero() {
             role="region"
             aria-roledescription="carousel"
             aria-label={t.hero.credentialsCarousel}
-            onMouseEnter={() => setIsCredentialCarouselPaused(true)}
-            onMouseLeave={(event) => {
-              if (!event.currentTarget.contains(document.activeElement)) {
-                setIsCredentialCarouselPaused(false);
-              }
-            }}
-            onFocusCapture={() => setIsCredentialCarouselPaused(true)}
-            onBlurCapture={(event) => {
-              if (
-                !event.relatedTarget ||
-                !event.currentTarget.contains(event.relatedTarget as Node)
-              ) {
-                setIsCredentialCarouselPaused(false);
-              }
-            }}
+            onFocusCapture={handleCredentialCarouselFocus}
+            onBlurCapture={handleCredentialCarouselBlur}
           >
-            <div className="hero-credential-viewport">
+            <div
+              className="hero-credential-viewport"
+              onTouchStart={handleCredentialTouchStart}
+              onTouchEnd={handleCredentialTouchEnd}
+            >
               <a
                 key={activeCredential.id}
                 href={activeCredential.verificationUrl}
@@ -197,6 +238,30 @@ export function Hero() {
                     />
                   ))}
                 </div>
+                <span
+                  className="hero-credential-counter"
+                  aria-label={`${t.hero.credentialPosition} ${activeCredentialIndex + 1} ${t.hero.of} ${credentials.length}`}
+                >
+                  {activeCredentialIndex + 1} / {credentials.length}
+                </span>
+                <button
+                  type="button"
+                  className="hero-credential-control"
+                  data-carousel-rotation-control="true"
+                  onClick={() => setIsCredentialCarouselPaused((current) => !current)}
+                  aria-label={
+                    isCredentialCarouselPaused
+                      ? t.hero.playCredentialCarousel
+                      : t.hero.pauseCredentialCarousel
+                  }
+                  aria-pressed={isCredentialCarouselPaused}
+                >
+                  {isCredentialCarouselPaused ? (
+                    <Play size={15} aria-hidden="true" />
+                  ) : (
+                    <Pause size={15} aria-hidden="true" />
+                  )}
+                </button>
                 <button
                   type="button"
                   className="hero-credential-control"
@@ -205,6 +270,14 @@ export function Hero() {
                 >
                   <ChevronRight size={17} aria-hidden="true" />
                 </button>
+              </div>
+            ) : null}
+            {credentials.length > 1 ? (
+              <div className="hero-credential-progress" aria-hidden="true">
+                <span
+                  key={`${activeCredentialIndex}-${isCredentialAutoRotationPaused}`}
+                  className={isCredentialAutoRotationPaused ? "paused" : undefined}
+                />
               </div>
             ) : null}
           </div>
