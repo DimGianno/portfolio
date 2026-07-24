@@ -654,6 +654,160 @@ h1 {
   margin-bottom: 18px;
   font-size: 1.15rem;
 }
+.github-contributions-section {
+  padding-top: 0;
+}
+.github-contribution-card {
+  --contribution-0: color-mix(in srgb, var(--surface-alt) 82%, var(--line));
+  --contribution-1: color-mix(in srgb, var(--accent) 24%, var(--surface));
+  --contribution-2: color-mix(in srgb, var(--accent) 52%, var(--surface));
+  --contribution-3: color-mix(in srgb, var(--accent) 72%, var(--accent-2));
+  --contribution-4: var(--accent-2);
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+.github-contribution-header,
+.github-contribution-header > div,
+.github-contribution-header a,
+.github-contribution-footer,
+.github-contribution-legend {
+  display: flex;
+  align-items: center;
+}
+.github-contribution-header {
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.github-contribution-header > div,
+.github-contribution-header a {
+  gap: 8px;
+}
+.github-contribution-header strong {
+  font-size: 0.96rem;
+}
+.github-contribution-header a {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.github-contribution-scroll {
+  overflow-x: auto;
+  padding: 2px 2px 13px;
+  scrollbar-color: color-mix(in srgb, var(--muted) 45%, transparent) transparent;
+  scrollbar-width: thin;
+}
+.github-contribution-scroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.github-contribution-chart {
+  display: grid;
+  grid-template-columns: 30px max-content;
+  gap: 8px;
+  min-width: max-content;
+}
+.github-weekday-labels {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+  padding-top: 22px;
+  color: var(--muted);
+  font-size: 0.62rem;
+  line-height: 11px;
+}
+.github-month-labels,
+.github-contribution-weeks {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 11px;
+  gap: 3px;
+}
+.github-month-labels {
+  height: 18px;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.67rem;
+  line-height: 1;
+}
+.github-month-labels span {
+  overflow: visible;
+  white-space: nowrap;
+}
+.github-contribution-week {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+}
+.github-contribution-day,
+.github-contribution-day-empty,
+.github-contribution-legend i {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
+.github-contribution-day,
+.github-contribution-legend i {
+  background: var(--contribution-0);
+}
+.github-contribution-day[data-level="1"],
+.github-contribution-legend i[data-level="1"] {
+  background: var(--contribution-1);
+}
+.github-contribution-day[data-level="2"],
+.github-contribution-legend i[data-level="2"] {
+  background: var(--contribution-2);
+}
+.github-contribution-day[data-level="3"],
+.github-contribution-legend i[data-level="3"] {
+  background: var(--contribution-3);
+}
+.github-contribution-day[data-level="4"],
+.github-contribution-legend i[data-level="4"] {
+  background: var(--contribution-4);
+}
+.github-contribution-day {
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
+}
+.github-contribution-day:hover {
+  z-index: 1;
+  transform: scale(1.45);
+  box-shadow: 0 0 0 1px var(--surface);
+}
+.github-contribution-footer {
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 9px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.github-contribution-legend {
+  gap: 4px;
+  white-space: nowrap;
+}
+.github-contribution-legend span:first-child {
+  margin-right: 3px;
+}
+.github-contribution-legend span:last-child {
+  margin-left: 3px;
+}
+.github-contribution-fallback {
+  margin: 0;
+  padding: 22px;
+  border-radius: 12px;
+  color: var(--muted);
+  background: var(--surface-alt);
+}
 .social-panel {
   display: grid;
   grid-template-columns: 1fr minmax(310px, 0.8fr);
@@ -903,6 +1057,9 @@ h1 {
   .cv-callout {
     padding: 30px;
   }
+  .github-contribution-card {
+    padding: 22px;
+  }
   .cv-callout {
     align-items: flex-start;
     flex-direction: column;
@@ -960,6 +1117,14 @@ h1 {
   }
   .section-heading {
     margin-bottom: 28px;
+  }
+  .github-contribution-header,
+  .github-contribution-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .github-contribution-card {
+    padding: 18px;
   }
   .page-hero {
     padding: 76px 0 45px;
