@@ -20,7 +20,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - **Status:** Completed
 - **Summary:** Added the verified DevReady Accelerator Program and MongoDB Overview credentials to the home-page hero.
 - **User impact:** Visitors can see each credential's issuer and issue date and open its public verification page directly.
-- **Technical impact:** Credential details are stored as structured content, official issuer artwork is served locally, and an accessible, responsive carousel provides five-second rotation, swipe and manual navigation, explicit play/pause control, position and timing feedback, keyboard-aware pausing, and motion-free transitions when reduced motion is requested.
+- **Technical impact:** Credential details are stored as structured content, official issuer artwork is served locally, and an accessible, responsive carousel provides five-second rotation with border timing feedback, desktop arrow and dot navigation, mobile swiping, hover and keyboard-focus pausing, and motion-free transitions when reduced motion is requested.
 - **Related area:** Content and frontend
 
 ### 2026-07-24 - Live GitHub contribution calendar

@@ -14,8 +14,6 @@ import {
   Code2,
   FileText,
   Mail,
-  Pause,
-  Play,
 } from "lucide-react";
 import { ThemedLogo } from "@/components/ThemedLogo";
 import { useSite } from "@/components/SiteProvider";
@@ -66,9 +64,8 @@ export function Hero() {
     setActiveCredentialIndex((current) => (current + 1) % credentials.length);
   };
 
-  const handleCredentialCarouselFocus = (event: FocusEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement;
-    setIsCredentialCarouselFocusPaused(target.dataset.carouselRotationControl !== "true");
+  const handleCredentialCarouselFocus = () => {
+    setIsCredentialCarouselFocusPaused(true);
   };
 
   const handleCredentialCarouselBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -175,59 +172,13 @@ export function Hero() {
             role="region"
             aria-roledescription="carousel"
             aria-label={t.hero.credentialsCarousel}
+            onMouseEnter={() => setIsCredentialCarouselPaused(true)}
+            onMouseLeave={() => setIsCredentialCarouselPaused(false)}
             onFocusCapture={handleCredentialCarouselFocus}
             onBlurCapture={handleCredentialCarouselBlur}
           >
-            <div
-              className="hero-credential-viewport"
-              onTouchStart={handleCredentialTouchStart}
-              onTouchEnd={handleCredentialTouchEnd}
-            >
-              <div key={activeCredential.id} className="hero-credential-frame">
-                <a
-                  href={activeCredential.verificationUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hero-credential-card"
-                  aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
-                >
-                  <span className="hero-credential-logo">
-                    <Image
-                      src={activeCredential.image}
-                      alt=""
-                      width={64}
-                      height={64}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="hero-credential-copy">
-                    <span className="hero-credential-status">
-                      <BadgeCheck size={15} aria-hidden="true" />
-                      {t.hero.verifiedCredential}
-                    </span>
-                    <strong>{activeCredential.title}</strong>
-                    <span>
-                      {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
-                      {credentialDateFormatter.format(
-                        new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
-                      )}
-                    </span>
-                  </span>
-                  <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
-                </a>
-                {credentials.length > 1 ? (
-                  <span
-                    key={`${activeCredentialIndex}-${isCredentialAutoRotationPaused}`}
-                    className={`hero-credential-border-progress${
-                      isCredentialAutoRotationPaused ? " paused" : ""
-                    }`}
-                    aria-hidden="true"
-                  />
-                ) : null}
-              </div>
-            </div>
-            {credentials.length > 1 ? (
-              <div className="hero-credential-controls">
+            <div className="hero-credential-stage">
+              {credentials.length > 1 ? (
                 <button
                   type="button"
                   className="hero-credential-control"
@@ -236,42 +187,56 @@ export function Hero() {
                 >
                   <ChevronLeft size={17} aria-hidden="true" />
                 </button>
-                <div className="hero-credential-dots">
-                  {credentials.map((credential, index) => (
-                    <button
-                      key={credential.id}
-                      type="button"
-                      className={index === activeCredentialIndex ? "active" : undefined}
-                      onClick={() => setActiveCredentialIndex(index)}
-                      aria-label={`${t.hero.viewCredential}: ${credential.title}`}
-                      aria-current={index === activeCredentialIndex ? "true" : undefined}
+              ) : null}
+              <div
+                className="hero-credential-viewport"
+                onTouchStart={handleCredentialTouchStart}
+                onTouchEnd={handleCredentialTouchEnd}
+              >
+                <div key={activeCredential.id} className="hero-credential-frame">
+                  <a
+                    href={activeCredential.verificationUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hero-credential-card"
+                    aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
+                  >
+                    <span className="hero-credential-logo">
+                      <Image
+                        src={activeCredential.image}
+                        alt=""
+                        width={64}
+                        height={64}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="hero-credential-copy">
+                      <span className="hero-credential-status">
+                        <BadgeCheck size={15} aria-hidden="true" />
+                        {t.hero.verifiedCredential}
+                      </span>
+                      <strong>{activeCredential.title}</strong>
+                      <span>
+                        {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
+                        {credentialDateFormatter.format(
+                          new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
+                        )}
+                      </span>
+                    </span>
+                    <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
+                  </a>
+                  {credentials.length > 1 ? (
+                    <span
+                      key={`${activeCredentialIndex}-${isCredentialAutoRotationPaused}`}
+                      className={`hero-credential-border-progress${
+                        isCredentialAutoRotationPaused ? " paused" : ""
+                      }`}
+                      aria-hidden="true"
                     />
-                  ))}
+                  ) : null}
                 </div>
-                <span
-                  className="hero-credential-counter"
-                  aria-label={`${t.hero.credentialPosition} ${activeCredentialIndex + 1} ${t.hero.of} ${credentials.length}`}
-                >
-                  {activeCredentialIndex + 1} / {credentials.length}
-                </span>
-                <button
-                  type="button"
-                  className="hero-credential-control"
-                  data-carousel-rotation-control="true"
-                  onClick={() => setIsCredentialCarouselPaused((current) => !current)}
-                  aria-label={
-                    isCredentialCarouselPaused
-                      ? t.hero.playCredentialCarousel
-                      : t.hero.pauseCredentialCarousel
-                  }
-                  aria-pressed={isCredentialCarouselPaused}
-                >
-                  {isCredentialCarouselPaused ? (
-                    <Play size={15} aria-hidden="true" />
-                  ) : (
-                    <Pause size={15} aria-hidden="true" />
-                  )}
-                </button>
+              </div>
+              {credentials.length > 1 ? (
                 <button
                   type="button"
                   className="hero-credential-control"
@@ -280,6 +245,20 @@ export function Hero() {
                 >
                   <ChevronRight size={17} aria-hidden="true" />
                 </button>
+              ) : null}
+            </div>
+            {credentials.length > 1 ? (
+              <div className="hero-credential-dots">
+                {credentials.map((credential, index) => (
+                  <button
+                    key={credential.id}
+                    type="button"
+                    className={index === activeCredentialIndex ? "active" : undefined}
+                    onClick={() => setActiveCredentialIndex(index)}
+                    aria-label={`${t.hero.viewCredential}: ${credential.title}`}
+                    aria-current={index === activeCredentialIndex ? "true" : undefined}
+                  />
+                ))}
               </div>
             ) : null}
           </div>

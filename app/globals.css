@@ -320,10 +320,17 @@ h1 {
   text-transform: uppercase;
 }
 .hero-credential-carousel {
-  width: min(100%, 560px);
+  width: min(100%, 640px);
   margin-inline: auto;
 }
+.hero-credential-stage {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 560px) 30px;
+  align-items: center;
+  gap: 10px;
+}
 .hero-credential-viewport {
+  min-width: 0;
   overflow: hidden;
   margin: -4px;
   padding: 4px;
@@ -402,14 +409,13 @@ h1 {
 .hero-credential-arrow {
   color: var(--accent);
 }
-.hero-credential-controls,
 .hero-credential-dots {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.hero-credential-controls {
-  gap: 10px;
+.hero-credential-dots {
+  gap: 6px;
   margin-top: 10px;
 }
 .hero-credential-control,
@@ -431,9 +437,6 @@ h1 {
   color: var(--text);
   border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
 }
-.hero-credential-dots {
-  gap: 6px;
-}
 .hero-credential-dots button {
   width: 8px;
   height: 8px;
@@ -449,14 +452,6 @@ h1 {
   border-radius: 999px;
   border-color: var(--accent);
   background: var(--accent);
-}
-.hero-credential-counter {
-  min-width: 34px;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  text-align: center;
 }
 @property --hero-credential-progress-angle {
   syntax: "<angle>";
@@ -1323,6 +1318,12 @@ h1 {
   }
   .hero-intro {
     font-size: 0.98rem;
+  }
+  .hero-credential-stage {
+    display: block;
+  }
+  .hero-credential-control {
+    display: none;
   }
   .hero-credential-card {
     grid-template-columns: 54px minmax(0, 1fr) auto;
