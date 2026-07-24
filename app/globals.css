@@ -329,6 +329,14 @@ h1 {
   padding: 4px;
   touch-action: pan-y;
 }
+.hero-credential-frame {
+  position: relative;
+  border-radius: 14px;
+  animation: hero-credential-enter 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
 .hero-credential-card {
   width: 100%;
   min-width: 0;
@@ -342,16 +350,17 @@ h1 {
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   box-shadow: 0 12px 35px color-mix(in srgb, var(--accent) 8%, transparent);
   text-align: left;
-  animation: hero-credential-enter 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
   transition:
-    transform 0.2s,
     border-color 0.2s,
     box-shadow 0.2s;
 }
-.hero-credential-card:hover {
+.hero-credential-frame:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
   box-shadow: 0 16px 38px color-mix(in srgb, var(--accent) 13%, transparent);
+}
+.hero-credential-frame:hover .hero-credential-card {
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+  box-shadow: none;
 }
 .hero-credential-logo {
   width: 64px;
@@ -449,24 +458,36 @@ h1 {
   font-weight: 700;
   text-align: center;
 }
-.hero-credential-progress {
-  height: 2px;
-  margin: 8px 4px 0;
-  overflow: hidden;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--line) 82%, transparent);
+@property --hero-credential-progress-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
-.hero-credential-progress span {
-  display: block;
-  width: 100%;
-  height: 100%;
+.hero-credential-border-progress {
+  --hero-credential-progress-angle: 0deg;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: 2px;
   border-radius: inherit;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: hero-credential-progress 5s linear forwards;
+  background: conic-gradient(
+    from calc(180deg - var(--hero-credential-progress-angle)),
+    var(--accent) 0
+      calc(var(--hero-credential-progress-angle) + var(--hero-credential-progress-angle)),
+    transparent 0
+  );
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: hero-credential-border-progress 5s linear forwards;
 }
-.hero-credential-progress span.paused {
+.hero-credential-border-progress.paused {
   animation: none;
 }
 @keyframes hero-credential-enter {
@@ -479,22 +500,23 @@ h1 {
     transform: translateX(0) scale(1);
   }
 }
-@keyframes hero-credential-progress {
+@keyframes hero-credential-border-progress {
   to {
-    transform: scaleX(1);
+    --hero-credential-progress-angle: 180deg;
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .hero-credential-frame,
   .hero-credential-card,
   .hero-credential-dots button {
     transition: none;
   }
-  .hero-credential-card {
+  .hero-credential-frame {
     animation: none;
   }
-  .hero-credential-progress span {
+  .hero-credential-border-progress {
+    --hero-credential-progress-angle: 180deg;
     animation: none;
-    transform: scaleX(1);
   }
 }
 .social-link {

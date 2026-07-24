@@ -183,38 +183,48 @@ export function Hero() {
               onTouchStart={handleCredentialTouchStart}
               onTouchEnd={handleCredentialTouchEnd}
             >
-              <a
-                key={activeCredential.id}
-                href={activeCredential.verificationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hero-credential-card"
-                aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
-              >
-                <span className="hero-credential-logo">
-                  <Image
-                    src={activeCredential.image}
-                    alt=""
-                    width={64}
-                    height={64}
+              <div key={activeCredential.id} className="hero-credential-frame">
+                <a
+                  href={activeCredential.verificationUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hero-credential-card"
+                  aria-label={`${t.hero.verifyCredential}: ${activeCredential.title}`}
+                >
+                  <span className="hero-credential-logo">
+                    <Image
+                      src={activeCredential.image}
+                      alt=""
+                      width={64}
+                      height={64}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="hero-credential-copy">
+                    <span className="hero-credential-status">
+                      <BadgeCheck size={15} aria-hidden="true" />
+                      {t.hero.verifiedCredential}
+                    </span>
+                    <strong>{activeCredential.title}</strong>
+                    <span>
+                      {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
+                      {credentialDateFormatter.format(
+                        new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
+                      )}
+                    </span>
+                  </span>
+                  <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
+                </a>
+                {credentials.length > 1 ? (
+                  <span
+                    key={`${activeCredentialIndex}-${isCredentialAutoRotationPaused}`}
+                    className={`hero-credential-border-progress${
+                      isCredentialAutoRotationPaused ? " paused" : ""
+                    }`}
                     aria-hidden="true"
                   />
-                </span>
-                <span className="hero-credential-copy">
-                  <span className="hero-credential-status">
-                    <BadgeCheck size={15} aria-hidden="true" />
-                    {t.hero.verifiedCredential}
-                  </span>
-                  <strong>{activeCredential.title}</strong>
-                  <span>
-                    {t.hero.issuedBy} {activeCredential.issuer} ·{" "}
-                    {credentialDateFormatter.format(
-                      new Date(`${activeCredential.issuedOn}T00:00:00.000Z`),
-                    )}
-                  </span>
-                </span>
-                <ArrowUpRight className="hero-credential-arrow" size={18} aria-hidden="true" />
-              </a>
+                ) : null}
+              </div>
             </div>
             {credentials.length > 1 ? (
               <div className="hero-credential-controls">
@@ -270,14 +280,6 @@ export function Hero() {
                 >
                   <ChevronRight size={17} aria-hidden="true" />
                 </button>
-              </div>
-            ) : null}
-            {credentials.length > 1 ? (
-              <div className="hero-credential-progress" aria-hidden="true">
-                <span
-                  key={`${activeCredentialIndex}-${isCredentialAutoRotationPaused}`}
-                  className={isCredentialAutoRotationPaused ? "paused" : undefined}
-                />
               </div>
             ) : null}
           </div>

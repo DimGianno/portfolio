@@ -32,6 +32,8 @@ describe("Hero credential", () => {
     expect(screen.getByText("Featured credentials")).toBeInTheDocument();
     expect(screen.getByLabelText("Credential 1 of 2")).toHaveTextContent("1 / 2");
     expect(screen.getByRole("button", { name: "Pause credential rotation" })).toBeInTheDocument();
+    expect(document.querySelector(".hero-credential-border-progress")).toBeInTheDocument();
+    expect(document.querySelector(".hero-credential-progress")).not.toBeInTheDocument();
     expect(screen.getByText("DevReady Accelerator Program")).toBeInTheDocument();
     expect(screen.getByText(/Issued by DevReady · 6 June 2026/)).toBeInTheDocument();
 
