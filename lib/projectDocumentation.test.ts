@@ -142,7 +142,10 @@ Latest update.`,
     });
     vi.stubGlobal("fetch", fetchMock);
 
-    const documentation = await loadProjectDocumentation([projects[0]]);
+    const frontendProject = projects.find((project) => project.slug === "frontend");
+    if (!frontendProject) throw new Error("Missing frontend project fixture");
+
+    const documentation = await loadProjectDocumentation([frontendProject]);
 
     expect(documentation.frontend?.roadmap.status).toBe("unavailable");
     expect(documentation.frontend?.updates.status).toBe("ready");

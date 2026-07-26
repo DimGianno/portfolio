@@ -7,7 +7,6 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  Code2,
   ExternalLink,
   GitBranch,
 } from "lucide-react";
@@ -30,9 +29,10 @@ export function ProjectCard({
   const screenshot = project.screenshots[activeScreenshot];
   const links = [
     { href: project.productionUrl, label: t.projects.production, icon: ExternalLink },
-    { href: project.stagingUrl, label: t.projects.staging, icon: ExternalLink },
+    ...(project.stagingUrl
+      ? [{ href: project.stagingUrl, label: t.projects.staging, icon: ExternalLink }]
+      : []),
     { href: project.repositoryUrl, label: t.projects.source, icon: GitBranch },
-    { href: project.stagingBranchUrl, label: t.projects.stagingBranch, icon: Code2 },
   ];
 
   const showPreviousScreenshot = () => {

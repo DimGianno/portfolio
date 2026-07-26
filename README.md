@@ -38,10 +38,10 @@ for tools that still depend on the legacy programmatic API.
 
 - **Theme-aware logos:** The existing `public/logos/DG logo white.png` is used in dark mode and `public/logos/DG logo dark.png` in light mode.
 - **CV PDF:** The embedded and downloadable English CV is stored at `public/cv/dimitris-giannopoulos-cv.pdf`.
-- **Project screenshots:** Screenshots are stored in `public/projects/call-center-frontend/` and `public/projects/call-center-backend/`. Their paths and localized descriptions are configured in `data/projects.ts` and displayed in responsive galleries.
+- **Project previews:** The Chromaflow social preview and Call Center screenshots are stored under `public/projects/`. Their paths and localized descriptions are configured in `data/projects.ts` and displayed in responsive galleries.
 - **Credentials:** Credential details and verification links are configured in `data/credentials.ts`. Official issuer artwork is stored in `public/credentials/` and displayed in an automatic home-page carousel with desktop arrow and dot navigation, mobile swipe navigation, hover and keyboard-focus pausing, and reduced-motion support.
 - **Project documentation:** Each full project card reads `PROJECT_ROADMAP.md` and `PROJECT_UPDATES.md` from the repository and branch configured in `data/projects.ts`. The Projects page refreshes selected sections from GitHub at most every five minutes, keeps each document collapsed initially, and links to the complete source file. Public repositories require no GitHub token.
-- **Staging branch:** Edit the single `STAGING_BRANCH` value in `data/projects.ts` whenever you deliberately want the staging branch link to point elsewhere. Staging app and API URLs remain fixed; no automatic branch selection is used.
+- **Project actions:** Each project displays only its configured production, staging, and repository destinations. Chromaflow has production and repository actions, while the Call Center projects also retain their staging deployment actions.
 - **Text and skills:** Edit `data/translations.ts`, `data/skills.ts`, and `data/projects.ts` rather than repeating content inside components.
 - **GitHub activity:** The home page reads the `DimGianno` contribution calendar through GitHub's GraphQL API, caches successful requests for one hour, and shows a profile link if the calendar is unavailable. Configure `GITHUB_TOKEN` locally and in Vercel; private contribution counts require the relevant GitHub profile visibility and token permissions.
 
