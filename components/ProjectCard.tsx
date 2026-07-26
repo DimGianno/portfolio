@@ -3,14 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
-  Code2,
-  ExternalLink,
-  GitBranch,
-} from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ExternalLink, GitBranch } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { useSite } from "@/components/SiteProvider";
 import { ProjectDocumentationPanel } from "@/components/ProjectDocumentation";
@@ -30,9 +23,10 @@ export function ProjectCard({
   const screenshot = project.screenshots[activeScreenshot];
   const links = [
     { href: project.productionUrl, label: t.projects.production, icon: ExternalLink },
-    { href: project.stagingUrl, label: t.projects.staging, icon: ExternalLink },
+    ...(project.stagingUrl
+      ? [{ href: project.stagingUrl, label: t.projects.staging, icon: ExternalLink }]
+      : []),
     { href: project.repositoryUrl, label: t.projects.source, icon: GitBranch },
-    { href: project.stagingBranchUrl, label: t.projects.stagingBranch, icon: Code2 },
   ];
 
   const showPreviousScreenshot = () => {

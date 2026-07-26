@@ -2,7 +2,7 @@
 
 ## Latest Stable State
 
-- **Last updated:** 2026-07-24
+- **Last updated:** 2026-07-26
 - **Current version:** 0.2.0
 - **Current status:** Active
 - **Primary branch:** `main`
@@ -13,6 +13,15 @@
 dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next.js App Router, React, TypeScript, Tailwind CSS, and Framer Motion. It presents selected frontend and backend work, technical skills, a verified professional credential, social links, and a web CV in English and Greek. Theme and language preferences persist in the browser, while Vercel provides hosting, Web Analytics, and the canonical production domain.
 
 ## Latest Updates
+
+### 2026-07-26 - Chromaflow featured project
+
+- **Type:** Feature
+- **Status:** Completed
+- **Summary:** Added Chromaflow as the portfolio's leading featured project with its live application, source repository, verified technology stack, and project documentation.
+- **User impact:** Visitors can discover the Water Sort solver, understand its A* search and responsive replay focus, open the production application, and inspect the source and current project documentation.
+- **Technical impact:** The shared project model now supports projects without staging environments, the responsive image gallery serves Chromaflow's repository-owned social preview locally, and obsolete staging-branch actions were removed from all project cards.
+- **Related area:** Content and frontend
 
 ### 2026-07-24 - Verified hero credentials
 
@@ -73,7 +82,7 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - Present a bilingual home page with profile, featured-project, skills, social, and CV sections.
 - Present responsive, bilingual hero credentials with direct public verification links.
 - Present a responsive, bilingual GitHub contribution calendar with light and dark theme support.
-- List the Call Center frontend and backend projects with technology stacks and links to production, staging, source repositories, and staging branches.
+- List Chromaflow and the Call Center frontend and backend projects with technology stacks and links to each available production, staging, and source destination.
 - Persist English or Greek language selection and light or dark theme preferences in local storage.
 - Respect the system color preference when no valid saved theme exists.
 - Provide dedicated `/`, `/projects`, and `/cv` routes with route-specific metadata.
@@ -93,5 +102,6 @@ dimgianno.com is Dimitris Giannopoulos's personal portfolio, built with the Next
 - Server-rendered project documentation sourced from GitHub with deterministic section selection and graceful per-file failure handling.
 - Server-fetched GitHub contribution activity with hourly caching and a graceful unavailable state.
 - Production and staging visibility for both frontend and backend Call Center projects.
+- Chromaflow presentation highlighting heuristic A* search, responsive puzzle interaction and replay, and automated logic and cross-browser testing.
 - Automated continuous integration covering formatting, linting, type checking, unit tests, and the production build.
 - Vercel deployment configuration with canonical-domain redirects, metadata, and Web Analytics.

@@ -1,13 +1,12 @@
 export type Project = {
-  slug: "frontend" | "backend";
+  slug: "chromaflow" | "frontend" | "backend";
   title: string;
   status: string;
   stack: string[];
   description: { en: string; el: string };
   productionUrl: string;
-  stagingUrl: string;
+  stagingUrl?: string;
   repositoryUrl: string;
-  stagingBranchUrl: string;
   documentation: {
     repository: string;
     branch: string;
@@ -20,13 +19,46 @@ export type Project = {
   }[];
 };
 
-// Change this one value whenever you intentionally promote a different branch to staging.
-export const STAGING_BRANCH = "staging";
-
+const chromaflowRepository = "https://github.com/DimGianno/water-sort-solver";
 const frontendRepository = "https://github.com/DimGianno/Call-Center-Frontend";
 const backendRepository = "https://github.com/DimGianno/Call-Center-BackEnd";
 
 export const projects: Project[] = [
+  {
+    slug: "chromaflow",
+    title: "Chromaflow",
+    status: "Live / Tested",
+    stack: [
+      "JavaScript",
+      "Semantic HTML",
+      "Modern CSS",
+      "Node.js",
+      "Playwright",
+      "GitHub Actions",
+      "Vercel",
+    ],
+    description: {
+      en: "An interactive Water Sort solver pairing mobile-first puzzle entry and responsive replay controls with an A* search engine, backed by automated logic and cross-browser tests.",
+      el: "Ένας διαδραστικός επιλυτής Water Sort που συνδυάζει mobile-first καταχώριση γρίφων και responsive χειριστήρια αναπαραγωγής με μηχανή αναζήτησης A*, με αυτοματοποιημένες δοκιμές λογικής και cross-browser ελέγχους.",
+    },
+    productionUrl: "https://chromaflow.dimgianno.com/",
+    repositoryUrl: chromaflowRepository,
+    documentation: {
+      repository: "DimGianno/water-sort-solver",
+      branch: "main",
+      roadmapPath: "PROJECT_ROADMAP.md",
+      updatesPath: "PROJECT_UPDATES.md",
+    },
+    screenshots: [
+      {
+        src: "/projects/chromaflow/og.png",
+        alt: {
+          en: "Chromaflow Water Sort Solver preview showing mixed-color bottles becoming sorted by color",
+          el: "Προεπισκόπηση του επιλυτή Water Sort Chromaflow με μπουκάλια ανάμεικτων χρωμάτων που ταξινομούνται ανά χρώμα",
+        },
+      },
+    ],
+  },
   {
     slug: "frontend",
     title: "Call Center Frontend",
@@ -39,7 +71,6 @@ export const projects: Project[] = [
     productionUrl: "https://call-center.dimgianno.com/",
     stagingUrl: "https://call-center-staging.dimgianno.com/",
     repositoryUrl: frontendRepository,
-    stagingBranchUrl: `${frontendRepository}/tree/${STAGING_BRANCH}`,
     documentation: {
       repository: "DimGianno/Call-Center-Frontend",
       branch: "main",
@@ -91,7 +122,6 @@ export const projects: Project[] = [
     productionUrl: "https://api.call-center.dimgianno.com/api-docs",
     stagingUrl: "https://api-staging.call-center.dimgianno.com/api-docs",
     repositoryUrl: backendRepository,
-    stagingBranchUrl: `${backendRepository}/tree/${STAGING_BRANCH}`,
     documentation: {
       repository: "DimGianno/Call-Center-BackEnd",
       branch: "master",
