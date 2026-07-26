@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  GitBranch,
-} from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ExternalLink, GitBranch } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { useSite } from "@/components/SiteProvider";
 import { ProjectDocumentationPanel } from "@/components/ProjectDocumentation";
